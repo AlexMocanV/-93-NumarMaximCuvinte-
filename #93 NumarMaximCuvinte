@@ -1,0 +1,37 @@
+#include <cstring>
+#include <fstream>
+#include <vector> 
+#include <algorithm>
+std::string nume="cuvmax";
+std::ifstream fin(nume+".in");
+std::ofstream fout(nume+".out");
+int main()
+{
+    int maxi=0;
+    std::string n;
+    std::string bun;
+    getline(fin,n);
+    int no=stoi(n);
+    while(no--)
+    {
+        std::string nou;
+        getline(fin,nou);
+        int nrcuv=1;
+        int i=1;
+        while(i<nou.length())
+        {
+            if(nou[i-1]==' '&&nou[i]!=' ')
+            {
+                nrcuv++;
+            }
+            i+=1;
+        }
+        if(maxi<nrcuv)
+        {
+            maxi=nrcuv;
+            bun=nou;
+        }
+    }
+    fout<<bun;
+    return 0;
+}
